@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Notepad</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="style.css">
+        
+    </head>
+    <body>
+        <div class="main-container">
+            <textarea class="main-text" id="main"></textarea> 
+            <form action="" id="fontForm">
+                <input name="Size" type="text" id="fontSizeField" class="main-text" value="24px">
+                <button type='button' id="fontSizeButton" class="button">Resize</button>
+                <input name="Font" type="text" id="fontFamilyField" class="main-text" value="monospace">
+                <button type='button' id="fontFamilyButton" class="button">Change Font</button>
+                <button type='button' id="colorToggleButton" class="button">Colors</button>
+                <div id="colorSection">
+                    <input name="text-color" type="text" id="textColorField" class="main-text" value="orange">
+                    <button type='button' id="textColorButton">   </button>
+                    <input name="field-color" type="text" id="fieldColorField" class="main-text" value="steelblue">
+                    <button type='button' id="fieldColorButton">   </button>
+                    <input name="background-color" type="text" id="backgroundColorField" class="main-text" value="darkslategray">
+                    <button type='button' id="backgroundColorButton">   </button>
+                </div>
+            </form>
+        </div>
+        <script src="script.js"></script>
+    </body>
+</html>

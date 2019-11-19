@@ -1,0 +1,62 @@
+body {
+    font-family: monospace;
+    margin: 0;
+}
+
+.main-container{
+    margin-left: 2.5vw;
+    margin-top: 1vh;
+}
+
+#main {
+    width: 95vw;
+    height: 85vh;
+    font-size: 24px;
+}
+
+#fontForm {
+    float: left;
+}
+
+#fontSizeField {
+    width: 50px;
+}
+
+#fontFamilyField {
+    width: 100px;
+}
+
+#textColorField {
+    width: 100px;
+}
+
+#fieldColorField {
+    width: 100px;
+}
+
+#backgroundColorField {
+    width: 100px;
+}
+
+#textColorButton {
+    height: 1.5em;
+    width: 2em;
+}
+
+#fieldColorButton {
+    height: 1.5em;
+    width: 2em;
+}
+
+#backgroundColorButton {
+    height: 1.5em;
+    width: 2em;
+}
+
+#colorSection {
+    margin-top: .5em;
+    background-color: rgba(0,0,0,.2);
+    height: 2em;
+    padding: .5em;
+    margin-bottom: 1em;
+}
