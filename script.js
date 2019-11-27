@@ -1,78 +1,120 @@
-
-var mFont = document.getElementById("main");
-var sFont = document.getElementById("fontSizeField");
-var fFont = sFont.value;
-var cFont = document.getElementById("fontFamilyField");
-
-var tColorField = document.getElementById("textColorField");
-var fColorField = document.getElementById("fieldColorField");
-var bColorField = document.getElementById("backgroundColorField");
-
+//main text area, font, and font family
+var mText = document.getElementById("main");
+var fSize = document.getElementById("fontSizeField");
+var fFamily = document.getElementById("fontFamilyField");
+//fonnt, font family, and color toggle buttons
 var fFamilyButton = document.getElementById('fontFamilyButton');
 var fSizeButton = document.getElementById('fontSizeButton');
 var cToggleButton = document.getElementById('colorToggleButton');
 var cToggleVar = 0;
-
+//color fields
 var colorSection = document.getElementById("colorSection");
+var tColorField = document.getElementById("textColorField");
+var fColorField = document.getElementById("fieldColorField");
+var bColorField = document.getElementById("backgroundColorField");
+//color buttons
 var tColorButton = document.getElementById('textColorButton');
 var fColorButton = document.getElementById('fieldColorButton');
 var bColorButton = document.getElementById('backgroundColorButton');
-
+//colors
 var tColor = tColorField.value;
 var fColor = fColorField.value;
 var bColor = bColorField.value;
-//set initial values
+//cookies
+var cookieAge = 1;
+//set cookie
+function setCookie(cname, cvalue, exdays) {
+    var d = new Date();
+    d.setTime(d.getTime() + (exdays*24*60*60*1000));
+    var expires = "expires="+ d.toUTCString();
+    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+  }
+//find cookie
+function getCookie(cname) {
+    var name = cname + "=";
+    var decodedCookie = decodeURIComponent(document.cookie);
+    var ca = decodedCookie.split(';');
+    for(var i = 0; i <ca.length; i++) {
+      var c = ca[i];
+      while (c.charAt(0) == ' ') {
+        c = c.substring(1);
+      }
+      if (c.indexOf(name) == 0) {
+        return c.substring(name.length, c.length);
+      }
+    }
+    return "";
+  }
+//check for cookie
+function findCookie (cvar, cname) {
+    if (getCookie(cname) != null) {
+        cvar.value = getCookie(cname);
+    }
+}
+// function to set initial values
 function valueSet(){
-    mFont.style.fontSize = fFont;
-
+    //set font
+    mText.style.fontSize = fSize.value;
+    mText.style.fontFamily = fFamily.value;
+    //set colors
+    tColor = tColorField.value;
+    fColor = fColorField.value;
+    bColor = bColorField.value;
+    //set background color
     document.body.style.backgroundColor = bColor;
-
-    mFont.style.color = tColor;
-    sFont.style.color = tColor;
-    cFont.style.color = tColor;
+    //objects that get text color
+    mText.style.color = tColor;
+    fSize.style.color = tColor;
+    fFamily.style.color = tColor;
     tColorField.style.color = tColor;
     fColorField.style.color = tColor;
     bColorField.style.color = tColor;
     fFamilyButton.style.backgroundColor = tColor;
     fSizeButton.style.backgroundColor = tColor;
     cToggleButton.style.backgroundColor = tColor;
-
-    mFont.style.backgroundColor = fColor;
-    sFont.style.backgroundColor = fColor;
-    cFont.style.backgroundColor = fColor;
+    //objects that get field color
+    mText.style.backgroundColor = fColor;
+    fSize.style.backgroundColor = fColor;
+    fFamily.style.backgroundColor = fColor;
     tColorField.style.backgroundColor = fColor;
     fColorField.style.backgroundColor = fColor;
     bColorField.style.backgroundColor = fColor;
     fFamilyButton.style.color = fColor;
     fSizeButton.style.color = fColor;
     cToggleButton.style.color = fColor;
-
+    //color buttons
     tColorButton.style.backgroundColor = tColor;
     fColorButton.style.backgroundColor = fColor;
     bColorButton.style.backgroundColor = bColor;
+    //set cookies
+    setCookie("fontSize", fSize.value, cookieAge);
+    setCookie("fontFamily", fFamily.value, cookieAge);
+    setCookie("textColor", tColor, cookieAge);
+    setCookie("fieldColor", fColor, cookieAge);
+    setCookie("backgroundColor", bColor, cookieAge);
 }
+
+findCookie(fSize, "fontSize");
+findCookie(fFamily, "fontFamily");
+findCookie(tColorField, "textColor");
+findCookie(fColorField, "fieldColor");
+findCookie(bColorField, "backgroundColor");
+
+//set values
 valueSet();
+//hide color section
 colorSection.style.display = "none";
-
+//Font Size Button
 fSizeButton.addEventListener("click", function(){
-    sFont.value="";
-    sFont.focus();
+    fSize.value="";
+    fSize.focus();
 });
-
-sFont.addEventListener("input", function(){
-    fFont = sFont.value;
-    valueSet();
-});
-
+//Font Family Button
 fFamilyButton.addEventListener("click", function(){
-    cFont.value="";
-    cFont.focus();
+    fFamily.value="";
+    fFamily.focus();
 });
-
-cFont.addEventListener("input", function(){
-    mFont.style.fontFamily = cFont.value;
-});
-
+//Color Section Toggle Button
 cToggleButton.addEventListener("click", function(){
     if (cToggleVar ===0) {
         colorSection.style.display = "block";
@@ -84,33 +126,38 @@ cToggleButton.addEventListener("click", function(){
         cToggleVar = 0;
     }
 });
+//Color Buttons
+fColorButton.addEventListener("click", function(){
+    fColorField.value="";
+    fColorField.focus();
+});
 
 tColorButton.addEventListener("click", function(){
     tColorField.value="";
     tColorField.focus();
 });
 
-tColorField.addEventListener("input", function(){
-    tColor = tColorField.value;
-    valueSet();
-});
-
-fColorButton.addEventListener("click", function(){
-    fColorField.value="";
-    fColorField.focus();
-});
-
-fColorField.addEventListener("input", function(){
-    fColor = fColorField.value;
-    valueSet();
-});
-
 bColorButton.addEventListener("click", function(){
     bColorField.value="";
     bColorField.focus();
 });
+//Inputs
+fSize.addEventListener("input", function(){
+    valueSet();
+});
+
+fFamily.addEventListener("input", function(){
+    valueSet();
+});
+
+tColorField.addEventListener("input", function(){
+    valueSet();
+});
+
+fColorField.addEventListener("input", function(){
+    valueSet();
+});
 
 bColorField.addEventListener("input", function(){
-    bColor = bColorField.value;
     valueSet();
 });
