@@ -21,7 +21,7 @@ var tColor = tColorField.value;
 var fColor = fColorField.value;
 var bColor = bColorField.value;
 //cookies
-var cookieAge = 1;
+var cookieAge = .01;
 //set cookie
 function setCookie(cname, cvalue, exdays) {
     var d = new Date();
@@ -47,7 +47,7 @@ function getCookie(cname) {
   }
 //check for cookie
 function findCookie (cvar, cname) {
-    if (getCookie(cname) != null) {
+    if (getCookie(cname) !== "") {
         cvar.value = getCookie(cname);
     }
 }
@@ -87,13 +87,19 @@ function valueSet(){
     fColorButton.style.backgroundColor = fColor;
     bColorButton.style.backgroundColor = bColor;
     //set cookies
+    setCookie("mainText", mText.value, cookieAge);
     setCookie("fontSize", fSize.value, cookieAge);
     setCookie("fontFamily", fFamily.value, cookieAge);
     setCookie("textColor", tColor, cookieAge);
     setCookie("fieldColor", fColor, cookieAge);
     setCookie("backgroundColor", bColor, cookieAge);
+    //set colors
+    tColor = tColorField.value;
+    fColor = fColorField.value;
+    bColor = bColorField.value;
 }
 
+findCookie(mText, "mainText");
 findCookie(fSize, "fontSize");
 findCookie(fFamily, "fontFamily");
 findCookie(tColorField, "textColor");
@@ -160,4 +166,42 @@ fColorField.addEventListener("input", function(){
 
 bColorField.addEventListener("input", function(){
     valueSet();
+});
+//fieldColorOutlines
+mText.addEventListener("focus", () => {
+    mText.style.outlineColor=tColor;
+});
+fSize.addEventListener("focus", () => {
+    fSize.style.outlineColor=tColor;
+});
+fFamily.addEventListener("focus", () => {
+    fFamily.style.outlineColor=tColor;
+});
+tColorField.addEventListener("focus", () => {
+    tColorField.style.outlineColor=tColor;
+});
+fColorField.addEventListener("focus", () => {
+    fColorField.style.outlineColor=tColor;
+});
+bColorField.addEventListener("focus", () => {
+    bColorField.style.outlineColor=tColor;
+});
+//buttonColorOutlines
+fSizeButton.addEventListener("focus", () => {
+    fSizeButton.style.outlineColor=fColor;
+});
+fFamilyButton.addEventListener("focus", () => {
+    fFamilyButton.style.outlineColor=fColor;
+});
+cToggleButton.addEventListener("focus", () => {
+    cToggleButton.style.outlineColor=fColor;
+});
+tColorButton.addEventListener("focus", () => {
+    tColorButton.style.outlineColor=fColor;
+});
+fColorButton.addEventListener("focus", () => {
+    fColorButton.style.outlineColor=tColor;
+});
+bColorButton.addEventListener("focus", () => {
+    bColorButton.style.outlineColor=fColor;
 });
