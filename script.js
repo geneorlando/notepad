@@ -169,39 +169,51 @@ bColorField.addEventListener("input", function(){
 });
 //fieldColorOutlines
 mText.addEventListener("focus", () => {
+    valueSet();
     mText.style.outlineColor=tColor;
 });
 fSize.addEventListener("focus", () => {
+    valueSet();
     fSize.style.outlineColor=tColor;
 });
 fFamily.addEventListener("focus", () => {
+    valueSet();
     fFamily.style.outlineColor=tColor;
 });
 tColorField.addEventListener("focus", () => {
+    valueSet();
     tColorField.style.outlineColor=tColor;
 });
 fColorField.addEventListener("focus", () => {
+    valueSet();
     fColorField.style.outlineColor=tColor;
 });
 bColorField.addEventListener("focus", () => {
+    valueSet();
     bColorField.style.outlineColor=tColor;
 });
 //buttonColorOutlines
 fSizeButton.addEventListener("focus", () => {
+    valueSet();
     fSizeButton.style.outlineColor=fColor;
 });
 fFamilyButton.addEventListener("focus", () => {
+    valueSet();
     fFamilyButton.style.outlineColor=fColor;
 });
 cToggleButton.addEventListener("focus", () => {
+    valueSet();
     cToggleButton.style.outlineColor=fColor;
 });
 tColorButton.addEventListener("focus", () => {
+    valueSet();
     tColorButton.style.outlineColor=fColor;
 });
 fColorButton.addEventListener("focus", () => {
+    valueSet();
     fColorButton.style.outlineColor=tColor;
 });
 bColorButton.addEventListener("focus", () => {
+    valueSet();
     bColorButton.style.outlineColor=fColor;
 });
