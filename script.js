@@ -7,6 +7,7 @@ var fFamilyButton = document.getElementById('fontFamilyButton');
 var fSizeButton = document.getElementById('fontSizeButton');
 var cToggleButton = document.getElementById('colorToggleButton');
 var cToggleVar = 0;
+var copyButton = document.getElementById('copyButton');
 //color fields
 var colorSection = document.getElementById("colorSection");
 var tColorField = document.getElementById("textColorField");
@@ -72,6 +73,7 @@ function valueSet(){
     fFamilyButton.style.backgroundColor = tColor;
     fSizeButton.style.backgroundColor = tColor;
     cToggleButton.style.backgroundColor = tColor;
+    copyButton.style.backgroundColor = tColor;
     //objects that get field color
     mText.style.backgroundColor = fColor;
     fSize.style.backgroundColor = fColor;
@@ -82,6 +84,7 @@ function valueSet(){
     fFamilyButton.style.color = fColor;
     fSizeButton.style.color = fColor;
     cToggleButton.style.color = fColor;
+    copyButton.style.color = fColor;
     //color buttons
     tColorButton.style.backgroundColor = tColor;
     fColorButton.style.backgroundColor = fColor;
@@ -111,17 +114,17 @@ valueSet();
 //hide color section
 colorSection.style.display = "none";
 //Font Size Button
-fSizeButton.addEventListener("click", function(){
+fSizeButton.addEventListener("click", () => {
     fSize.value="";
     fSize.focus();
 });
 //Font Family Button
-fFamilyButton.addEventListener("click", function(){
+fFamilyButton.addEventListener("click", () => {
     fFamily.value="";
     fFamily.focus();
 });
 //Color Section Toggle Button
-cToggleButton.addEventListener("click", function(){
+cToggleButton.addEventListener("click", () => {
     if (cToggleVar ===0) {
         colorSection.style.display = "block";
         cToggleButton.style.opacity = ".5";
@@ -132,39 +135,45 @@ cToggleButton.addEventListener("click", function(){
         cToggleVar = 0;
     }
 });
+//Copy Button
+copyButton.addEventListener("click", () => {
+    mText.select();
+    document.execCommand("copy");
+    mText.focus();
+});
 //Color Buttons
-fColorButton.addEventListener("click", function(){
+fColorButton.addEventListener("click", () => {
     fColorField.value="";
     fColorField.focus();
 });
 
-tColorButton.addEventListener("click", function(){
+tColorButton.addEventListener("click", () => {
     tColorField.value="";
     tColorField.focus();
 });
 
-bColorButton.addEventListener("click", function(){
+bColorButton.addEventListener("click", () => {
     bColorField.value="";
     bColorField.focus();
 });
 //Inputs
-fSize.addEventListener("input", function(){
+fSize.addEventListener("input", () => {
     valueSet();
 });
 
-fFamily.addEventListener("input", function(){
+fFamily.addEventListener("input", () => {
     valueSet();
 });
 
-tColorField.addEventListener("input", function(){
+tColorField.addEventListener("input", () => {
     valueSet();
 });
 
-fColorField.addEventListener("input", function(){
+fColorField.addEventListener("input", () => {
     valueSet();
 });
 
-bColorField.addEventListener("input", function(){
+bColorField.addEventListener("input", () => {
     valueSet();
 });
 //fieldColorOutlines
@@ -204,6 +213,10 @@ fFamilyButton.addEventListener("focus", () => {
 cToggleButton.addEventListener("focus", () => {
     valueSet();
     cToggleButton.style.outlineColor=fColor;
+});
+copyButton.addEventListener("focus", () => {
+    valueSet();
+    copyButton.style.outlineColor=fColor;
 });
 tColorButton.addEventListener("focus", () => {
     valueSet();
